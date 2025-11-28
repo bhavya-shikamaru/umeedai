@@ -43,39 +43,39 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
   const handleRefresh = () => {
     setIsRefreshing(true);
-    // Simulate data refresh
     setTimeout(() => {
       setIsRefreshing(false);
     }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen aurora-bg-animated">
       <div className="container mx-auto px-4 py-8">
         {/* Page Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 space-y-4 lg:space-y-0">
           <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">Risk Analytics Dashboard / जोखिम विश्लेषण डैशबोर्ड</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-3xl font-medium text-white mb-2">Risk Analytics Dashboard / जोखिम विश्लेषण डैशबोर्ड</h1>
+            <p className="text-white/70">
               Real-time insights and trends across all students / सभी छात्रों में वास्तविक समय की अंतर्दृष्टि और रुझान
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button
-              variant="outline"
+              variant="glass"
               onClick={handleRefresh}
               disabled={isRefreshing}
+              className="text-white border-white/25"
             >
               <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
               Refresh Data / डेटा रीफ्रेश करें
             </Button>
             <Link to="/upload">
-              <Button variant="outline">
+              <Button variant="glass" className="text-white border-white/25">
                 <Plus className="h-4 w-4" />
                 Add Students / छात्र जोड़ें
               </Button>
             </Link>
-            <Button variant="outline">
+            <Button variant="glass" className="text-white border-white/25">
               <Download className="h-4 w-4" />
               Export Report / रिपोर्ट निर्यात करें
             </Button>
@@ -84,51 +84,51 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
         {/* Risk Level Statistics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="shadow-soft animate-fade-in">
+          <Card className="animate-fade-in hover-lift">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Students / कुल छात्र</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-white/70">Total Students / कुल छात्र</CardTitle>
+              <Users className="h-4 w-4 text-white/70" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-foreground">{riskStats.total}</div>
-              <p className="text-xs text-muted-foreground">Currently enrolled / वर्तमान में नामांकित</p>
+              <div className="text-2xl font-medium text-white">{riskStats.total}</div>
+              <p className="text-xs text-white/60">Currently enrolled / वर्तमान में नामांकित</p>
             </CardContent>
           </Card>
 
-          <Card className="shadow-soft animate-fade-in border-l-4 border-l-risk-high">
+          <Card className="animate-fade-in hover-lift border-l-4 border-l-risk-high">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">High Risk / उच्च जोखिम</CardTitle>
+              <CardTitle className="text-sm font-medium text-white/70">High Risk / उच्च जोखिम</CardTitle>
               <AlertTriangle className="h-4 w-4 text-risk-high" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-risk-high">{riskStats.high}</div>
-              <p className="text-xs text-muted-foreground">
+              <div className="text-2xl font-medium text-risk-high">{riskStats.high}</div>
+              <p className="text-xs text-white/60">
                 {((riskStats.high / riskStats.total) * 100).toFixed(1)}% of total
               </p>
             </CardContent>
           </Card>
 
-          <Card className="shadow-soft animate-fade-in border-l-4 border-l-risk-medium">
+          <Card className="animate-fade-in hover-lift border-l-4 border-l-risk-medium">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Medium Risk / मध्यम जोखिम</CardTitle>
+              <CardTitle className="text-sm font-medium text-white/70">Medium Risk / मध्यम जोखिम</CardTitle>
               <TrendingUp className="h-4 w-4 text-risk-medium" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-risk-medium">{riskStats.medium}</div>
-              <p className="text-xs text-muted-foreground">
+              <div className="text-2xl font-medium text-risk-medium">{riskStats.medium}</div>
+              <p className="text-xs text-white/60">
                 {((riskStats.medium / riskStats.total) * 100).toFixed(1)}% of total
               </p>
             </CardContent>
           </Card>
 
-          <Card className="shadow-soft animate-fade-in border-l-4 border-l-risk-low">
+          <Card className="animate-fade-in hover-lift border-l-4 border-l-risk-low">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Low Risk / कम जोखिम</CardTitle>
+              <CardTitle className="text-sm font-medium text-white/70">Low Risk / कम जोखिम</CardTitle>
               <Calendar className="h-4 w-4 text-risk-low" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-risk-low">{riskStats.low}</div>
-              <p className="text-xs text-muted-foreground">
+              <div className="text-2xl font-medium text-risk-low">{riskStats.low}</div>
+              <p className="text-xs text-white/60">
                 {((riskStats.low / riskStats.total) * 100).toFixed(1)}% of total
               </p>
             </CardContent>
@@ -137,24 +137,24 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
         {/* Quick Insights */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <Card className="shadow-soft border-l-4 border-l-blue-500">
+          <Card className="hover-lift border-l-4 border-l-blue-400">
             <CardHeader>
-              <CardTitle className="text-lg flex items-center">
-                <TrendingUp className="h-5 w-5 mr-2 text-blue-500" />
+              <CardTitle className="text-lg flex items-center text-white">
+                <TrendingUp className="h-5 w-5 mr-2 text-blue-400" />
                 Attendance Insights / उपस्थिति अंतर्दृष्टि
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm">Average Attendance / औसत उपस्थिति:</span>
-                  <span className="font-semibold">
+                  <span className="text-sm text-white/70">Average Attendance / औसत उपस्थिति:</span>
+                  <span className="font-medium text-white">
                     {((students.reduce((acc, s) => acc + s.attendance_rate_30, 0) / students.length) * 100).toFixed(1)}%
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm">Below 80% / 80% से कम:</span>
-                  <span className="font-semibold text-amber-600">
+                  <span className="text-sm text-white/70">Below 80% / 80% से कम:</span>
+                  <span className="font-medium text-amber-400">
                     {students.filter(s => s.attendance_rate_30 < 0.8).length} students / छात्र
                   </span>
                 </div>
@@ -162,24 +162,24 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
             </CardContent>
           </Card>
 
-          <Card className="shadow-soft border-l-4 border-l-green-500">
+          <Card className="hover-lift border-l-4 border-l-green-400">
             <CardHeader>
-              <CardTitle className="text-lg flex items-center">
-                <TrendingUp className="h-5 w-5 mr-2 text-green-500" />
+              <CardTitle className="text-lg flex items-center text-white">
+                <TrendingUp className="h-5 w-5 mr-2 text-green-400" />
                 Academic Performance / शैक्षणिक प्रदर्शन
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm">Average Score / औसत अंक:</span>
-                  <span className="font-semibold">
+                  <span className="text-sm text-white/70">Average Score / औसत अंक:</span>
+                  <span className="font-medium text-white">
                     {(students.reduce((acc, s) => acc + s.avg_score, 0) / students.length).toFixed(1)}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm">Below 50 / 50 से कम:</span>
-                  <span className="font-semibold text-red-600">
+                  <span className="text-sm text-white/70">Below 50 / 50 से कम:</span>
+                  <span className="font-medium text-red-400">
                     {students.filter(s => s.avg_score < 50).length} students / छात्र
                   </span>
                 </div>
@@ -187,22 +187,22 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
             </CardContent>
           </Card>
 
-          <Card className="shadow-soft border-l-4 border-l-purple-500">
+          <Card className="hover-lift border-l-4 border-l-purple-400">
             <CardHeader>
-              <CardTitle className="text-lg flex items-center">
-                <AlertTriangle className="h-5 w-5 mr-2 text-purple-500" />
+              <CardTitle className="text-lg flex items-center text-white">
+                <AlertTriangle className="h-5 w-5 mr-2 text-purple-400" />
                 Intervention Priority / हस्तक्षेप प्राथमिकता
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-sm">Immediate Action / तत्काल कार्रवाई:</span>
-                  <Badge variant="destructive">{riskStats.high}</Badge>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-white/70">Immediate Action / तत्काल कार्रवाई:</span>
+                  <Badge className="bg-risk-high text-white">{riskStats.high}</Badge>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">Monitor Closely / निकट निगरानी:</span>
-                  <Badge variant="secondary">{riskStats.medium}</Badge>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-white/70">Monitor Closely / निकट निगरानी:</span>
+                  <Badge className="bg-risk-medium text-white">{riskStats.medium}</Badge>
                 </div>
               </div>
             </CardContent>
@@ -211,24 +211,23 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="text-sm font-medium text-foreground flex items-center">
+          <span className="text-sm font-medium text-white flex items-center">
             <Filter className="h-4 w-4 mr-2" />
             Filter by Risk Level / जोखिम स्तर के अनुसार फ़िल्टर करें:
           </span>
           {["all", "high", "medium", "low"].map((risk) => (
             <Badge
               key={risk}
-              variant={filterRisk === risk ? "default" : "outline"}
-              className={`cursor-pointer transition-smooth ${
+              className={`cursor-pointer transition-all duration-300 ${
                 filterRisk === risk 
                   ? risk === "high" 
-                    ? "bg-risk-high text-risk-high-foreground" 
+                    ? "bg-risk-high text-white" 
                     : risk === "medium"
-                    ? "bg-risk-medium text-risk-medium-foreground"
+                    ? "bg-risk-medium text-white"
                     : risk === "low"
-                    ? "bg-risk-low text-risk-low-foreground"
-                    : "bg-primary text-primary-foreground"
-                  : "hover:bg-muted"
+                    ? "bg-risk-low text-white"
+                    : "bg-white/30 text-white"
+                  : "bg-white/10 text-white/70 hover:bg-white/20 border border-white/20"
               }`}
               onClick={() => setFilterRisk(risk as typeof filterRisk)}
             >
@@ -244,17 +243,17 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
         {/* Student Grid */}
         {filteredStudents.length === 0 ? (
-          <Card className="shadow-soft">
+          <Card>
             <CardContent className="text-center py-12">
-              <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">No Students Found</h3>
-              <p className="text-muted-foreground mb-4">
+              <Users className="h-12 w-12 text-white/50 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-white mb-2">No Students Found</h3>
+              <p className="text-white/60 mb-4">
                 {filterRisk === "all" 
                   ? "No students have been added yet." 
                   : `No students found with ${filterRisk} risk level.`}
               </p>
               <Link to="/upload">
-                <Button variant="hero">
+                <Button className="bg-white text-primary hover:bg-white/90">
                   <Plus className="h-4 w-4" />
                   Add Your First Student
                 </Button>
@@ -276,22 +275,22 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
         {/* Quick Actions */}
         <div className="mt-12 text-center">
-          <Card className="shadow-card bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 border-dashed">
+          <Card className="glass-strong border-dashed border-white/30">
             <CardContent className="py-8">
-              <h3 className="text-xl font-semibold text-foreground mb-4">
+              <h3 className="text-xl font-medium text-white mb-4">
                 Ready to track more students? / अधिक छात्रों को ट्रैक करने के लिए तैयार हैं? 📊
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-white/70 mb-6">
                 Add comprehensive analytics and intervention tracking for better outcomes / बेहतर परिणामों के लिए व्यापक विश्लेषण और हस्तक्षेप ट्रैकिंग जोड़ें
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/upload">
-                  <Button variant="hero">
+                  <Button className="bg-white text-primary hover:bg-white/90">
                     <Plus className="h-4 w-4" />
                     Upload Student Data / छात्र डेटा अपलोड करें
                   </Button>
                 </Link>
-                <Button variant="outline">
+                <Button variant="glass" className="text-white border-white/25">
                   <Download className="h-4 w-4" />
                   Download Template / टेम्पलेट डाउनलोड करें
                 </Button>
