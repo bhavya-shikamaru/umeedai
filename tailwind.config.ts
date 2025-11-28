@@ -76,6 +76,9 @@ export default {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         heading: ['Poppins', 'Inter', 'ui-sans-serif', 'sans-serif'],
       },
+      backdropBlur: {
+        xs: '2px',
+      },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
         "gradient-hero": "var(--gradient-hero)",

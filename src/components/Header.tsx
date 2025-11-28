@@ -15,19 +15,19 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
   const isLanding = location.pathname === "/";
 
   return (
-    <header className="bg-card/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-soft dark:bg-card/90">
+    <header className="glass-strong sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="p-1.5 md:p-2 bg-gradient-hero rounded-lg shadow-soft group-hover:shadow-primary transition-smooth">
+            <div className="p-1.5 md:p-2 bg-white/20 backdrop-blur-sm rounded-lg group-hover:bg-white/30 transition-all duration-300">
               <GraduationCap className="h-5 w-5 md:h-6 md:w-6 text-white" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="font-bold text-base md:text-lg text-foreground">UMEED</h1>
-              <p className="text-[10px] md:text-xs text-muted-foreground">Student Success Platform / छात्र सफलता मंच</p>
+              <h1 className="font-medium text-base md:text-lg text-white">UMEED</h1>
+              <p className="text-[10px] md:text-xs text-white/60">Student Success Platform / छात्र सफलता मंच</p>
             </div>
             <div className="sm:hidden">
-              <h1 className="font-bold text-base text-foreground">UMEED</h1>
+              <h1 className="font-medium text-base text-white">UMEED</h1>
             </div>
           </Link>
 
@@ -37,24 +37,24 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
               <>
                 <Link
                   to="/dashboard"
-                  className={`text-sm font-medium transition-smooth hover:text-primary ${
-                    location.pathname === "/dashboard" ? "text-primary" : "text-muted-foreground"
+                  className={`text-sm font-medium transition-all duration-300 hover:text-white ${
+                    location.pathname === "/dashboard" ? "text-white" : "text-white/70"
                   }`}
                 >
                   Dashboard / डैशबोर्ड
                 </Link>
                 <Link
                   to="/students"
-                  className={`text-sm font-medium transition-smooth hover:text-primary ${
-                    location.pathname === "/students" ? "text-primary" : "text-muted-foreground"
+                  className={`text-sm font-medium transition-all duration-300 hover:text-white ${
+                    location.pathname === "/students" ? "text-white" : "text-white/70"
                   }`}
                 >
                   Students / छात्र
                 </Link>
                 <Link
                   to="/upload"
-                  className={`text-sm font-medium transition-smooth hover:text-primary ${
-                    location.pathname === "/upload" ? "text-primary" : "text-muted-foreground"
+                  className={`text-sm font-medium transition-all duration-300 hover:text-white ${
+                    location.pathname === "/upload" ? "text-white" : "text-white/70"
                   }`}
                 >
                   Data Upload / डेटा अपलोड
@@ -70,15 +70,15 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
             {user ? (
               <>
                 <div className="hidden lg:flex items-center space-x-2 text-sm">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  <span className="font-medium text-foreground">{user.name}</span>
-                  <span className="text-muted-foreground">({user.role})</span>
+                  <User className="h-4 w-4 text-white/70" />
+                  <span className="font-medium text-white">{user.name}</span>
+                  <span className="text-white/60">({user.role})</span>
                 </div>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={onLogout}
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/70 hover:text-white hover:bg-white/10"
                 >
                   <LogOut className="h-4 w-4 mr-2" />
                   <span className="hidden lg:inline">Logout / लॉगआउट</span>
@@ -87,7 +87,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
               </>
             ) : (
               <Link to="/login">
-                <Button variant="default" size="sm">
+                <Button variant="glass" size="sm" className="text-white border-white/25">
                   <span className="hidden lg:inline">Login / लॉगिन</span>
                   <span className="lg:hidden">Login</span>
                 </Button>
@@ -102,7 +102,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
               variant="ghost"
               size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2"
+              className="p-2 text-white hover:bg-white/10"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -111,13 +111,13 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in border-t border-border pt-4">
+          <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in border-t border-white/10 pt-4">
             {!isLanding && user && (
               <>
                 <Link
                   to="/dashboard"
-                  className={`block text-sm font-medium py-2 transition-smooth hover:text-primary ${
-                    location.pathname === "/dashboard" ? "text-primary" : "text-muted-foreground"
+                  className={`block text-sm font-medium py-2 transition-all duration-300 hover:text-white ${
+                    location.pathname === "/dashboard" ? "text-white" : "text-white/70"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -125,8 +125,8 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
                 </Link>
                 <Link
                   to="/students"
-                  className={`block text-sm font-medium py-2 transition-smooth hover:text-primary ${
-                    location.pathname === "/students" ? "text-primary" : "text-muted-foreground"
+                  className={`block text-sm font-medium py-2 transition-all duration-300 hover:text-white ${
+                    location.pathname === "/students" ? "text-white" : "text-white/70"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -134,8 +134,8 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
                 </Link>
                 <Link
                   to="/upload"
-                  className={`block text-sm font-medium py-2 transition-smooth hover:text-primary ${
-                    location.pathname === "/upload" ? "text-primary" : "text-muted-foreground"
+                  className={`block text-sm font-medium py-2 transition-all duration-300 hover:text-white ${
+                    location.pathname === "/upload" ? "text-white" : "text-white/70"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -146,10 +146,10 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
             
             {user ? (
               <>
-                <div className="flex items-center space-x-2 text-sm py-2 border-t border-border pt-3">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  <span className="font-medium text-foreground">{user.name}</span>
-                  <span className="text-muted-foreground text-xs">({user.role})</span>
+                <div className="flex items-center space-x-2 text-sm py-2 border-t border-white/10 pt-3">
+                  <User className="h-4 w-4 text-white/70" />
+                  <span className="font-medium text-white">{user.name}</span>
+                  <span className="text-white/50 text-xs">({user.role})</span>
                 </div>
                 <Button
                   variant="ghost"
@@ -158,7 +158,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
                     onLogout?.();
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full justify-start text-muted-foreground hover:text-foreground"
+                  className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10"
                 >
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout / लॉगआउट
@@ -166,7 +166,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
               </>
             ) : (
               <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="default" size="sm" className="w-full">
+                <Button variant="glass" size="sm" className="w-full text-white border-white/25">
                   Login / लॉगिन
                 </Button>
               </Link>
